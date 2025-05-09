@@ -5,7 +5,7 @@ conn = sqlite3.connect("vendas.db")
 cursor = conn.cursor()
 
 # Consulta: quanto cada cliente gastou
-print("📊 Total gasto por cliente:")
+print("Total gasto por cliente:")
 cursor.execute("""
     SELECT c.nome, SUM(p.preco * ip.quantidade) AS total_gasto
     FROM Clientes c
@@ -22,7 +22,7 @@ else:
     print("  Nenhum cliente realizou compras.")
 
 # Consulta: produto mais vendido
-print("\n🏆 Produto mais vendido:")
+print(" Produto mais vendido:")
 cursor.execute("""
     SELECT p.nome, SUM(ip.quantidade) AS total_vendido
     FROM Produtos p
@@ -38,7 +38,7 @@ else:
     print("  Nenhum produto vendido ainda.")
 
 # Consulta: produtos nunca vendidos
-print("\n📦 Produtos nunca vendidos:")
+print(" Produtos nunca vendidos:")
 cursor.execute("""
     SELECT nome FROM Produtos
     WHERE id NOT IN (
